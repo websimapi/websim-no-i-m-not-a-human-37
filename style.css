@@ -630,9 +630,9 @@ h1 .not-word.pulse-red { animation: notPulse 1.2s ease; }
 
 #dashboard-container {
     position: absolute;
-    bottom: -5vh; /* Pushed down slightly */
+    bottom: 0; /* Position at the bottom edge of the viewport */
     left: 50%;
-    width: 25vw; /* 1/4 of viewport width as requested */
+    width: 100vw; /* Make it full width to align with the scene */
     z-index: 3;
     pointer-events: none;
     opacity: 0;

@@ -44,18 +44,14 @@ export async function startCutscene(){
     if (posterizeInstance) { try{ posterizeInstance.cleanup(); }catch{} }
     const img2 = new Image(); img2.alt='Cutscene scene 2 - roadside and distant ruins';
     const canvasWrapper = document.getElementById('cutscene-canvas-wrapper');
+    const dashboardContainer = document.getElementById('dashboard-container');
+
     img2.onload = ()=>{ 
       posterizeInstance = applyPosterizeToImage(canvas, img2, 5.0, 0.12); 
       
-      const dashboardOverlay = document.createElement('img');
-      dashboardOverlay.src = 'car_dashboard_overlay.png';
-      dashboardOverlay.id = 'dashboard-overlay';
-      dashboardOverlay.alt = '';
-      dashboardOverlay.setAttribute('aria-hidden', 'true');
-      cs.appendChild(dashboardOverlay);
-
       requestAnimationFrame(()=>{ 
         canvas.classList.add('reveal', 'drive-zoom'); 
+        if(dashboardContainer) dashboardContainer.classList.add('visible');
         
         let scale = 1.0;
         let lastTime = performance.now();

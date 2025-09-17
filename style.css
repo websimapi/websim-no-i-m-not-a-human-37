@@ -619,18 +619,28 @@ h1 .not-word.pulse-red { animation: notPulse 1.2s ease; }
 }
 
 #dashboard-overlay {
-    position: absolute;
-    bottom: -10vh;
-    left: 50%;
-    width: 15vw;
-    transform: translateX(-50%);
+    width: 100%;
     height: auto;
+    display: block;
     object-fit: contain;
     object-position: bottom;
+    filter: brightness(0.6) contrast(1.1) saturate(0.8);
+    /* Removed all position/animation properties, will be on container */
+}
+
+#dashboard-container {
+    position: absolute;
+    bottom: -5vh; /* Pushed down slightly */
+    left: 50%;
+    width: 25vw; /* 1/4 of viewport width as requested */
     z-index: 3;
     pointer-events: none;
     opacity: 0;
-    filter: brightness(0.6) contrast(1.1) saturate(0.8);
+    transform: translateX(-50%);
+    will-change: transform, opacity;
+}
+
+#dashboard-container.visible {
     animation: fadeInDashboard 3s 1s ease-in forwards, dashboardBounce 4s 1s linear infinite;
 }
 
